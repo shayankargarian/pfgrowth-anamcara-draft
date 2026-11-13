@@ -30,8 +30,11 @@ if(vid){
     const on=()=>hero.classList.add('playing');
     vid.addEventListener('playing',on,{once:true});
     vid.addEventListener('error',()=>vid.remove(),true);
-    const p=vid.play();if(p&&p.catch)p.catch(()=>{});
-    if(!vid.paused&&vid.readyState>2)on();
+    // attach sources only after the page has loaded, so the still paints first
+    const start=()=>{const sd=navigator.connection&&navigator.connection.saveData;if(sd)return;
+      [['webm','video/webm'],['mp4','video/mp4']].forEach(([k,t])=>{const u=vid.dataset[k];if(u){const so=document.createElement('source');so.src=u;so.type=t;vid.appendChild(so);}});
+      vid.preload='auto';vid.load();const p=vid.play();if(p&&p.catch)p.catch(()=>{});};
+    if(document.readyState==='complete')setTimeout(start,400);else window.addEventListener('load',()=>setTimeout(start,400),{once:true});
   }
 }
 // panels rise as they enter

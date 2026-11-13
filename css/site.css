@@ -309,3 +309,37 @@ form.mock .note{font-size:12.5px;opacity:.7;margin-top:12px}
 }
 @media(prefers-reduced-motion:reduce){.js .pad .panel.rise{opacity:1;transform:none;transition:none}.profile[open]{animation:none}}
 .dealmap .mapscroll{max-width:1100px}
+/* ===== v5 device pass: WCAG 2.2 AA contrast, Apple HIG 44pt targets, iPad and landscape fixes ===== */
+:root{--sage-deep:#56735C;--sage-95:rgba(86,115,92,.96);--coral-ink:#2B1F2E}
+/* coral keeps its colour; text on it goes deep plum (5.6:1) */
+.coral{color:var(--coral-ink)}.coral .label{opacity:1}
+.coral .rows>div,.coral .stat{border-color:rgba(43,31,46,.35)}
+.coral .btn:hover{background:var(--coral-ink);color:var(--paper);border-color:var(--coral-ink)}
+/* sage surfaces deepen slightly so white text passes (5.3:1) */
+.sage{background:var(--sage-deep)}
+.pv-sage .label,.sage .label,.pv-plum .label,.pv-ink .label,.plum .label,.inkbg .label{opacity:.92}
+.cmp .v small{font-size:12px;opacity:.92}
+/* muted text no lower than 4.5:1 */
+form.mock .note,.dir li span,.pmore,.ftr .legal,.count,.case .meta,.person .na,.ptitle.na,.fbox .small,.dealmap .small{opacity:.88}
+.dir li span{font-size:12.5px}.pmore{font-size:12px}
+.rail a{color:var(--ink);min-height:44px;min-width:44px}
+/* draft pill: plum, readable size */
+.ftr .draft,.draft{background:var(--plum);color:var(--paper);font-size:12px;padding:6px 12px}
+/* 44 x 44 pt hit areas */
+.brand{min-height:44px;align-items:center}
+.ftr nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 2px}
+form.mock input,form.mock select{min-height:46px}
+@media(min-width:1024px){.nav{align-items:center}.nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0}.nav a::after{bottom:2px}}
+/* phones and small iPads in landscape: slimmer header, hero copy above the fold */
+@media(orientation:landscape) and (max-height:500px){
+ :root{--hdr:60px}.brand img{height:34px}
+ .hero{min-height:0;height:100svh}.hero .wrap{padding-bottom:7vh}.hero h1{font-size:clamp(30px,6.4vh + 8px,44px)}
+ .pad::before{height:52vh;min-height:180px}.pad .art{height:calc(52vh + 160px);min-height:300px}
+ .overlay{flex-direction:row;flex-wrap:wrap;align-content:center;gap:0 6%;padding:64px 8% 16px}.overlay .ologo{display:none}.overlay a{font-size:22px;width:44%;text-align:center;padding:9px 0;min-height:44px}
+}
+/* honour the notch in landscape */
+.hdr{padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
+:root{--sage-95:rgba(80,107,86,.97)}
+.pv-sage .label,.sage .label{opacity:1}
+.pv-sage .k,.sage .k,.pv-sage .rows .k{opacity:1}
+#map .small{opacity:.9}
