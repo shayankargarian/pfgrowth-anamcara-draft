@@ -149,3 +149,5 @@ form.mock .note{font-size:12.5px;opacity:.7;margin-top:12px}
 .portrait.photo::after{opacity:.18}
 .portrait.photo{background:var(--sand)}.portrait.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.02)}
 .portrait.photo::after{opacity:.18}
+.hero img.scene[src$=".webp"]{object-position:42% 60%}
+.hero .shade{background:linear-gradient(to top,rgba(36,30,40,.72),rgba(36,30,40,.15) 55%,rgba(36,30,40,.25))}
