@@ -151,3 +151,22 @@ form.mock .note{font-size:12.5px;opacity:.7;margin-top:12px}
 .portrait.photo::after{opacity:.18}
 .hero img.scene[src$=".webp"]{object-position:42% 60%}
 .hero .shade{background:linear-gradient(to top,rgba(36,30,40,.72),rgba(36,30,40,.15) 55%,rgba(36,30,40,.25))}
+.chars{display:grid;grid-template-columns:1fr 1fr;gap:40px 5%}@media(min-width:900px){.chars{grid-template-columns:repeat(4,1fr)}}
+.char{margin:0}.char img{width:100%;height:auto;background:var(--sand)}.char figcaption{padding-top:14px}.char h3{margin:.1em 0 .3em}.char p{font-size:14px;line-height:1.55}
+@media(max-width:600px){.char p{font-size:13px}}
+/* review fixes: art runs behind the whole band and ghosts through the panel, like the reference image-pad */
+.pad{position:relative;overflow:hidden}
+.pad .art{position:absolute;inset:0;height:auto;max-height:none;min-height:0;z-index:0}
+.pad .art img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.pad .art img[src$=".webp"]{object-position:center 30%}
+.pad::before{content:"";display:block;height:58vh;min-height:300px;max-height:720px}
+.pad .panel{margin-top:0!important;position:relative;z-index:2}
+/* inner page title on paper, like the reference inner page */
+.phero{background:var(--paper);color:var(--ink);padding:64px 0 24px}
+@media(min-width:768px){.phero{padding:110px 0 30px}}
+.phero + .sec{padding-top:56px}@media(min-width:768px){.phero + .sec{padding-top:80px}}
+@media(min-width:768px){.brand img{height:62px}}
+.pad .art{bottom:auto;height:calc(58vh + 300px);max-height:1020px}
+.pad::before{height:58vh}
+@media(max-width:767px){.pad::before{height:34vh;min-height:240px}.pad .art{height:calc(34vh + 160px);min-height:400px}}
+.pad .art img[src$=".webp"]{object-position:center 40%}
